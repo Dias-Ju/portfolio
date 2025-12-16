@@ -3,136 +3,411 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,600;1,600&display=swap');
 
 :root {
-    --bege-fundo: #F3EBD8;
-    --rosa-escuro-textos-principais: #F297A0;
-    --verde-subtitulos: #B6BB79;
-    --rosa-bebe-botao: #F9D0CE;
+  --bege-fundo: #F3EBD8;
+  --rosa-escuro-textos-principais: #F297A0;
+  --verde-subtitulos: #B6BB79;
+  --rosa-bebe-botao: #F9D0CE;
+
+  /* espaçamentos padrão */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
 }
 
-*{
-    margin: 0;
-    padding: 0;
+body {
+  background-color: var(--bege-fundo);
+  color: var(--rosa-escuro-textos-principais);
+  font-family: "Raleway", sans-serif;
 }
 
-body{
-    box-sizing: border-box;
-    background-color: var(--bege-fundo);
-    color: var(--rosa-escuro-textos-principais);
-}
-
-.cabecalho {
-    padding: 2% 0% 0% 15%;
-}
-
-.cabecalho__menu {
-    display: flex;
-    gap: 80px;
-}
-
-.cabecalho__menu__link {
-    font-family: "Raleway", sans-serif;
-    font-size: 1.5rem;
-    color: var(--rosa-escuro-textos-principais);
-    text-decoration: none;
-}
-
-.img-media {
-    width: 600px;
-    height: auto;
-}
-
+/* ---------------------------------------------------------
+   APRESENTAÇÃO (HERO)
+--------------------------------------------------------- */
 .apresentacao {
-    padding: 5% 15%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 82px;
+  padding: 5% 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 82px;
 }
 
 .apresentacao__conteudo {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
 }
 
 .apresentacao__conteudo__titulo {
-    font-size: 2.25rem;
-    font-family: "Yeseva One", serif;
+  font-size: 2.25rem;
+  font-family: "Yeseva One", serif;
 }
 
-.titulo-destaque {
-    color:var(--verde-subtitulos);
-}
+.titulo-destaque { color: var(--verde-subtitulos); }
 
-.apresentacao__conteudo__texto {
-    font-size: 1.5rem;
-    font-family: "Raleway", sans-serif;
-}
+.apresentacao__conteudo__texto { font-size: 1.5rem; }
 
 .apresentacao__links__subtitulo {
-    display: flex;
-    justify-content: center;
-    font-family: "Raleway", sans-serif;
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .apresentacao__links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
+  display: flex;
+  gap: 32px;
 }
 
 .apresentacao__links__design {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    border: 2px solid var(--rosa-bebe-botao);
-    width: 50%;
-    text-align: center;
-    border-radius: 16px;
-    padding: 21.5px 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--verde-subtitulos);
-    font-family: "Raleway", sans-serif;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  border: 2px solid var(--rosa-bebe-botao);
+  width: 50%;
+  text-align: center;
+  border-radius: 16px;
+  padding: 21.5px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--verde-subtitulos);
+  transition: 0.3s;
 }
 
 .apresentacao__links__design:hover {
-    background-color:var(--rosa-bebe-botao);
+  background-color: var(--rosa-bebe-botao);
+  transform: translateY(-2px);
 }
 
+/* OBS: .apresentacao__imagem é para imagens do HERO apenas */
 .apresentacao__imagem {
-    width: 50%;
+  width: 50%;
+  border-radius: 10px;
 }
 
+/* ---------------------------------------------------------
+   BOTÕES / PLAYLIST
+--------------------------------------------------------- */
+#openFormBtn,
+.botao-playlist {
+  background: var(--bege-fundo);
+  color: var(--verde-subtitulos);
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#openFormBtn:hover,
+.botao-playlist:hover {
+  background: var(--rosa-bebe-botao);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-icon { width: 24px; height: 24px; }
+
+/* ---------------------------------------------------------
+   MODAL
+--------------------------------------------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.modal-content {
+  background: #fffaf5;
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border: 1px solid #f5c8cc;
+  animation: zoomIn 0.3s ease;
+  transition: transform 0.2s ease;
+}
+
+.modal-content div { position: relative; }
+
+.welcome-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.welcome-header .florzinha { width: 45px; }
+.welcome-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e66a89;
+  margin: 0;
+  font-family: "Yeseva One", serif;
+}
+
+.modal-content p,
+.modal-content label {
+  color: var(--rosa-escuro-textos-principais);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0 12px;
+  border: 1.5px solid #f3b7bd;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  transition: 0.3s;
+}
+.modal-content input:focus {
+  border-color: #f08ba1;
+  box-shadow: 0 0 6px rgba(240,139,161,0.3);
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #f080a0;
+  transition: 0.2s;
+}
+.close:hover { color: #d65c7b; transform: scale(1.1); }
+
+/* ---------------------------------------------------------
+   AUTOCOMPLETE / SUGESTÕES
+--------------------------------------------------------- */
+.suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-top: 4px;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 1rem;
+}
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--verde-subtitulos);
+  transition: background 0.2s, transform 0.2s;
+  border-radius: 8px;
+}
+.suggestion-item:hover {
+  background: var(--rosa-bebe-botao);
+  color: var(--verde-subtitulos);
+  transform: translateX(2px);
+}
+
+/* ---------------------------------------------------------
+   PLAYLIST
+--------------------------------------------------------- */
+.playlist {
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 1rem;
+  border-radius: 15px;
+  background: linear-gradient(145deg, var(--verde-subtitulos));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.song {
+  background: var(--bege-fundo);
+  margin: 0.8rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.song:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.12); }
+.song span { color: var(--rosa-bebe-botao); font-size: 1.2rem; }
+.song-icon { width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; }
+.playlist-titulo {
+  text-align: center;
+  color: var(--rosa-bebe-botao);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: "Raleway", serif;
+}
+
+/* ---------------------------------------------------------
+   ANIMAÇÕES / UTIL
+--------------------------------------------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+html { scroll-behavior: smooth; }
+
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes zoomIn { from {transform: scale(0.9); opacity:0;} to {transform: scale(1); opacity:1;} }
+
+/* ---------------------------------------------------------
+   SEÇÃO: SOBRE MIM (Polaroid + Texto)
+--------------------------------------------------------- */
+
+.sobre__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Polaroid: controla o TAMANHO do conjunto (moldura + foto) */
+.polaroid {
+  position: relative;
+  width: 420px;                /* ajuste principal de tamanho */
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+}
+
+/* Foto “dentro” do vão da moldura (não usar width fixa em px) */
+.polaroid__foto {
+  position: absolute;
+  top: 6%;
+  left: -30%;
+  width: 370px;
+  bottom: 23%;
+  object-fit: cover;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* Moldura por cima, sempre 100% do container */
+.polaroid__frame {
+  position: absolute;
+  inset: 0;
+  top: -20%;
+  left: -75%;
+  width: 750px;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Texto à direita */
+.sobre__texto {
+  width: 50%;
+  color: var(--rosa-escuro-textos-principais);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: justify;
+  max-width: 680px; 
+  font-family: "Raleway", sans-serif;          /* evita linhas muito longas */
+}
+.sobre__texto h2 {
+  font-family: "Yeseva One", serif;
+  color: var(--verde-subtitulos);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+
+/* ===== IMAGEM JUBSPC (foto + moldura unificada) ===== */
+.jubspc {
+  position: relative;
+  display: flex;
+  justify-content: flex-start; /* alinha à esquerda */
+  align-items: center;
+  margin-left: 60px;           /* ajuste horizontal */
+  margin-top: -40px;           /* sobe um pouco */
+  z-index: 2;
+}
+
+.jubspc__imagem {
+  width: 580px;                /* tamanho principal da imagem */
+  height: auto;
+}
+
+
+@media (max-width: 900px) {
+  .jubspc {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .jubspc__imagem {
+    width: 300px;
+  }
+}
+
+/* ---------------------------------------------------------
+   RODAPÉ
+--------------------------------------------------------- */
 .rodape {
-    padding: 24px;
-    color: black;
-    background-color: var(--verde-subtitulos);
-    text-align: center;
-    font-family: "Raleway", sans-serif;
-    font-size: 1rem;
+  padding: 24px;
+  color: black;
+  background-color: var(--verde-subtitulos);
+  text-align: center;
+  font-size: 1rem;
+}
+.rodape_imagem {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 24px;
 }
 
+/* ---------------------------------------------------------
+   RESPONSIVO GLOBAL
+--------------------------------------------------------- */
 @media (min-width: 480px) and (max-width: 1200px) {
-    
-    .cabecalho {
-        padding: 10%;
-    }
+  .cabecalho { padding: 10%; }
+  .cabecalho__menu { justify-content: center; }
+  .apresentacao { flex-direction: column-reverse; padding: 5%; }
+  .apresentacao__conteudo { width: auto; }
+}
 
-    .cabecalho__menu {
-        justify-content: center;
-    }
-    
-    .apresentacao {
-        flex-direction: column-reverse;
-        padding: 5%;
-    }
-
-    .apresentacao__conteudo {
-        width: auto;
-    }
+@media (max-width: 900px) {
+  .sobre__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+  .sobre__texto {
+    width: 90%;
+    text-align: center;
+    max-width: none;
+  }
+  .polaroid { width: 300px; }
 }

@@ -1,45 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8"> 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifolio</title>
-    <link rel="stylesheet" href="./styles/style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio — Júlia Dias</title>
+  <link rel="stylesheet" href="./styles/style.css" />
 </head>
 <body>
-    <header class="cabecalho">
-        <nav class="cabecalho__menu">
-            <a class="cabecalho__menu__link" href="index.html">Home</a>
-            <a class="cabecalho__menu__link" href="about.html">Sobre mim</a>
-        </nav>
-    </header>
-    <main class="apresentacao">
-        <section class="apresentacao__conteudo">
-        <h1 class="apresentacao__conteudo__titulo">
-            Hello,
-            <strong class="titulo-destaque">I'm Júlia!
-            </strong></h1>
-            <p class="apresentacao__conteudo__texto">Apaixonada por tecnologia e atualmente cursando ADS com foco em Back-end. 
-                Além disso, tenho me dedicado a aprender HTML e CSS para entregar projetos ainda mais completos. 
-                A música acompanha e inspira meu dia a dia, dando ritmo ao meu desenvolvimento.
-            </p class="apresentacao__conteudo__texto">
-            <h2 class="apresentacao__links__subtitulo">Acesse minhas redes:</h2>
-            <div class="apresentacao__links">
-                <a class="apresentacao__links__design" href="https://github.com/Dias-Ju">
-                    <img src="./assets/github-logo.png">
-                    GitHub
-                </a>
-                <a class="apresentacao__links__design" href="https://www.linkedin.com/in/j%C3%BAlia-dias-339a7222a/">
-                    <img src="./assets/linkedin.png">
-                    Linkedin
-                </a>
-            </div>
-        </section>
-            <img class="apresentacao__imagem" src="./assets/jubspc.jpg" alt="Foto da Júlia criança em um computador antigo" class="img-media">
-    </main>
-    <footer class="rodape">
-        <p>Desenvolvido por Júlia Dias.</p>
-    </footer>
+
+  <main id="home" class="apresentacao">
+    <section class="apresentacao__conteudo">
+      <h1 class="apresentacao__conteudo__titulo">
+        Hello, <strong class="titulo-destaque">I'm Júlia!</strong>
+      </h1>
+
+      <p class="apresentacao__conteudo__texto">
+        A vontade de entender o que há por trás dos sistemas me levou a cursar ADS com foco em Back-end.
+        Além disso, tenho me dedicado a aprender HTML e CSS para entregar projetos ainda mais completos.
+        A música acompanha e inspira meu dia a dia, dando ritmo ao meu desenvolvimento.
+      </p>
+
+      <h2 class="apresentacao__links__subtitulo">Acesse minhas redes:</h2>
+      <div class="apresentacao__links">
+        <a class="apresentacao__links__design" href="https://github.com/Dias-Ju" target="_blank" rel="noopener">
+          <img src="./assets/github-logo.png" alt="Logo do GitHub" loading="lazy" />
+          GitHub
+        </a>
+        <a class="apresentacao__links__design" href="https://www.linkedin.com/in/j%C3%BAlia-dias-339a7222a/" target="_blank" rel="noopener">
+          <img src="./assets/linkedin.png" alt="Logo do LinkedIn" loading="lazy" />
+          Linkedin
+        </a>
+      </div>
+
+      <button id="openFormBtn" class="botao-playlist">
+        <img src="./assets/cd_bts.png" alt="CD BTS" class="btn-icon" loading="lazy" />
+        Participar da Playlist
+      </button>
+    </section>
+
+
+    <div class="jubspc">
+  <img src="./assets/jubspc-completa.png" 
+       alt="Foto da Júlia criança com moldura decorativa" 
+       class="jubspc__imagem">
+</div>
+
+  </main>
+
+  <section id="sobre" class="sobre fade-in">
+    <div class="sobre__container">
+      <div class="polaroid">
+        <img
+          src="./assets/ju-atual.jpg"
+          alt="Foto atual de Júlia"
+          class="polaroid__foto"
+          loading="lazy"
+        />
+        <img
+          src="./assets/moldura_fotos.png"
+          alt=""
+          class="polaroid__frame"
+          aria-hidden="true"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="sobre__texto fade-in">
+        <h2>Sobre mim</h2>
+        <p>
+          Desde pequena, sempre tive curiosidade sobre como as coisas funcionavam. Essa curiosidade
+          me levou ao mundo da tecnologia, onde hoje estudo Análise e Desenvolvimento de Sistemas.
+        </p>
+        <p>
+          Tenho focado no Back-end, mas também exploro o Front-end com HTML e CSS para criar projetos
+          completos. A música é minha inspiração diária — ela me acompanha enquanto desenvolvo e traz
+          ritmo às minhas criações.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <span class="close" aria-label="Fechar">&times;</span>
+
+      <div class="welcome-header">
+        <img src="assets/florzinha.gif" alt="Flores animadas" class="florzinha" loading="lazy" />
+        <h2 id="modal-title">Olá, bem-vindo(a)!</h2>
+      </div>
+
+      <p>Estou criando uma playlist coletiva com as músicas favoritas de quem visita meu portfólio. Quer participar?</p>
+
+      <form id="musicForm">
+        <div>
+          <label for="musica">Qual é a sua música favorita do momento?</label>
+          <input type="text" id="musica" name="musica" autocomplete="off" required />
+          <div id="suggestions" class="suggestions"></div>
+        </div>
+
+        <div>
+          <label for="nome">Seu nome ou apelido (opcional)</label>
+          <input type="text" id="nome" name="nome" />
+        </div>
+
+        <button type="submit" class="botao-playlist">
+          <img src="./assets/cd_bts.png" class="btn-icon" alt="CD BTS" loading="lazy" />
+          Adicionar à Playlist
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== PLAYLIST ===== -->
+  <section class="playlist" aria-labelledby="playlist-titulo">
+    <h3 id="playlist-titulo" class="playlist-titulo">Playlist da Galera</h3>
+    <div id="playlist"></div>
+  </section>
+
+  <footer class="rodape">
+    <p>Desenvolvido por Júlia Dias.</p>
+  </footer>
+
+  <script src="./script.js" defer></script>
 </body>
 </html>
